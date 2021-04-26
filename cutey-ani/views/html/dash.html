@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cutey-ANI|用户信息面板</title>
+    <!-- Load Bootstrap styles and jQuery scripts. -->
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/71e3554019.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/views/js/dash.js"></script>
+  </head>
+  <body>
+    <header role="heading">
+      <div class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+          <h1 class="display-3 mb-3">Cutey-ANI</h1>
+          <span class="badge badge-success mb-3">Beta</span>
+          <p class="lead">
+            我们不能要求所有人都具备收养流浪动物的条件，所以有你的爱就足够了。
+          </p>
+          <h4>用真爱代替伤害，让生命不再流浪！</h4>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="media mb-3">
+          <div class="media-body">
+            <h5 class="mt-0 mb-3">个人信息</h5>
+            <div class="row text-center">
+              <div class="col">
+                <p>
+                  <button
+                    class="btn btn-block btn-primary"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#phone"
+                    aria-expanded="false"
+                  >
+                    电话
+                  </button>
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <button
+                    class="btn btn-block btn-success"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#name"
+                    aria-expanded="false"
+                  >
+                    昵称
+                  </button>
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <button
+                    class="btn btn-block btn-danger"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#pet"
+                    aria-expanded="false"
+                  >
+                    偏好
+                  </button>
+                </p>
+              </div>
+              <div class="col">
+                <p>
+                  <button
+                    class="btn btn-block btn-warning"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#address"
+                    aria-expanded="false"
+                  >
+                    地址
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="collapse mb-3" id="phone">
+              <div class="card card-body text-center">
+                <h5 id="setphone">18697355865</h5>
+              </div>
+            </div>
+            <div class="collapse mb-3" id="name">
+              <div class="card card-body text-center">
+                <h5 id="setname">修遥控板的王师傅</h5>
+              </div>
+            </div>
+            <div class="collapse mb-3" id="pet">
+              <div class="card card-body text-center">
+                <h5 id="setpet">猫</h5>
+              </div>
+            </div>
+            <div class="collapse mb-3" id="address">
+              <div class="card card-body text-center">
+                <h5 id="setaddress">沈阳市沈北新区道义南大街37号</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="media mb-3">
+          <div class="media-body">
+            <h5 class="mt-0 mb-3">分享图片</h5>
+            <div class="text-center">
+              <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                  <button type="button" class="btn btn-block btn-dark">
+                    上传
+                  </button>
+                </div>
+                <div class="col"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="media mb-3">
+          <div class="media-body">
+            <h5 class="mt-0 mb-3">寄领养申请</h5>
+            <div class="nav flex-column nav-pills mb-3" role="tablist">
+              <a
+                class="nav-link active"
+                data-toggle="pill"
+                href="#adoption"
+                role="tab"
+                aria-selected="true"
+                >领养条例</a
+              >
+              <a
+                class="nav-link"
+                data-toggle="pill"
+                href="#foster"
+                role="tab"
+                aria-selected="false"
+                >寄养条例</a
+              >
+            </div>
+            <div class="tab-content">
+              <div
+                class="tab-pane fade show active"
+                id="adoption"
+                role="tabpanel"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas elementum sollicitudin massa, a consectetur tellus
+                ornare ac. Vivamus semper tortor massa. Praesent non tristique
+                leo, aliquam dictum enim. Fusce imperdiet elit sed lacus
+                feugiat, ut interdum dui mattis. Vestibulum dapibus vitae odio
+                eu dignissim. Proin lobortis ante eget elit rhoncus, ac laoreet
+                ante semper. Proin faucibus a tellus et consequat.
+              </div>
+              <div class="tab-pane fade" id="foster" role="tabpanel">
+                Pellentesque quis risus magna. Etiam ultricies convallis
+                ultrices. Vestibulum aliquet nibh quis eros facilisis sodales.
+                Sed eget euismod tellus, in gravida leo. Cras ultrices ultrices
+                nunc, et mollis est feugiat ac. Morbi faucibus magna nec
+                consequat pulvinar. Fusce sollicitudin rhoncus mattis.
+              </div>
+            </div>
+            <div class="text-center mt-3 mb-3">
+              <a href=""><h5>cutey-ani@gmail.com</h5></a>
+            </div>
+            <p>
+              寄养或领养代表着你决定对流浪小动物负起照顾的责任，任何生命都是沉甸甸的，所以务必要善待每一个小动物。请尽可能详尽真实的描述自己的情况并发送到上面的邮箱，我们的工作人员会在7个工作日内对你的申请进行审核，届时会将结果反馈。
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

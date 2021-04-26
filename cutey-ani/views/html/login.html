@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cutey-ANI|用户登录或注册</title>
+    <!-- Load Bootstrap styles and jQuery scripts. -->
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/71e3554019.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="views/js/login.js"></script>
+  </head>
+  <header role="heading">
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="display-3 mb-3">Cutey-ANI</h1>
+        <span class="badge badge-success mb-3">Beta</span>
+        <p class="lead">
+          填写真实准确的信息加入我们，登录之后便可查看个人信息和领养寄养小动物。
+        </p>
+        <h4>登录、注册，你和流浪小动物有个约会！</h4>
+      </div>
+    </div>
+  </header>
+  <body>
+    <div class="container text-center">
+      <form id="info">
+        <div class="row mt-4 mb-4">
+          <div class="col">
+            <input
+              id="phone"
+              type="text"
+              class="form-control"
+              placeholder="电话"
+            />
+          </div>
+          <div class="col">
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              placeholder="密码"
+            />
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col">
+            <input
+              id="nickname"
+              type="text"
+              class="form-control"
+              placeholder="昵称"
+              disabled
+            />
+          </div>
+          <div class="col">
+            <select id="animal" name="animal" class="form-control" disabled>
+              <option>选择喜欢的宠物类型</option>
+              <option id="cat">猫</option>
+              <option id="dog">狗</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-4 mb-4">
+          <div class="col">
+            <input
+              id="address"
+              type="text"
+              class="form-control"
+              placeholder="当前住址"
+              disabled
+            />
+          </div>
+        </div>
+        <input id="register" class="form-check-input" type="checkbox" />
+        <label class="form-check-label" for="gridCheck"
+          >我是新用户我要注册！</label
+        >
+        <div class="row mt-4 mb-4">
+          <div class="col"></div>
+          <div class="col">
+            <button id="submit" type="button" class="btn btn-success btn-block">
+              提交
+            </button>
+          </div>
+          <div class="col"></div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
