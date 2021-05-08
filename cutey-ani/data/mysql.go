@@ -2,6 +2,7 @@ package data
 
 import (
 	"database/sql"
+	"strconv"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -39,6 +40,15 @@ func (m *MySQL) CloseDatabase() error {
 	return nil
 }
 
+func (m *MySQL) SetPhoto(id int, url string) error {
+	sqlStr := "Insert into photo(url,id) values(?,?)"
+	_, err := m.db.Exec(sqlStr, url, id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *MySQL) JoinUsers(user *User) error {
 	sqlStr := "Insert into user(email,password,nickname,address) values(?,?,?,?)"
 	_, err := m.db.Exec(sqlStr, user.Email, user.Password, user.NickName, user.Address)
@@ -46,6 +56,16 @@ func (m *MySQL) JoinUsers(user *User) error {
 		return err
 	}
 	return nil
+}
+
+func (m *MySQL) GetUrl(id int) (string, error) {
+	sqlStr := "select url from photo where id=?"
+	var u string
+	err := m.db.QueryRow(sqlStr, id).Scan(&u)
+	if err != nil {
+		return "", err
+	}
+	return u, nil
 }
 
 func (m *MySQL) CheckUsers(user *User) (bool, error) {
@@ -60,6 +80,17 @@ func (m *MySQL) CheckUsers(user *User) (bool, error) {
 	} else {
 		return false, nil
 	}
+}
+
+func (m *MySQL) GetPhotoNum() (int, error) {
+	sqlStr := "select count(*) from photo"
+	var num string
+	err := m.db.QueryRow(sqlStr).Scan(&num)
+	cnt, _ := strconv.Atoi(num)
+	if err != nil {
+		return cnt, err
+	}
+	return cnt, nil
 }
 
 func (m *MySQL) GetUser(phone string) (User, error) {

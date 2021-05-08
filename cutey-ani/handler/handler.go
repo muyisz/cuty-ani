@@ -1,7 +1,11 @@
 package handler
 
 import (
+	"math/rand"
 	"net/http"
+	"path"
+	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/muyisz/cutey-ani/data"
@@ -13,7 +17,7 @@ const (
 	// CookieAccessScope is cookie's scope.
 	CookieAccessScope = "127.0.0.1"
 	// FileStorageDirectory is where these files storage.
-	FileStorageDirectory = "./storage"
+	FileStorageDirectory = "views/img/"
 	// DownloadUrlBase decide the base url of file's url.
 	DownloadUrlBase = "http://127.0.0.1:8090/download"
 )
@@ -36,6 +40,18 @@ func PostLoginData(db *data.MySQL) gin.HandlerFunc {
 	}
 }
 
+func PostPhoto(db *data.MySQL) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		photo, _ := c.FormFile("photo")
+		num, _ := db.GetPhotoNum()
+		url := FileStorageDirectory + strconv.Itoa(num+1) + ".jfif"
+		db.SetPhoto(num+1, url)
+		dst := path.Join("./views/img/", strconv.Itoa(num+1)+".jfif")
+		c.SaveUploadedFile(photo, dst)
+		c.JSON(http.StatusOK, gin.H{"pass": true})
+	}
+}
+
 func PostRegisterData(db *data.MySQL) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		phone := c.PostForm("phone")
@@ -55,6 +71,19 @@ func PostRegisterData(db *data.MySQL) gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{"pass": true, "phone": phone})
 	}
 }
+
+func GetPhoto(db *data.MySQL) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		num, _ := db.GetPhotoNum()
+		var url [11]string
+		rand.Seed(time.Now().Unix())
+		for i := 0; i < 11; i++ {
+			url[i], _ = db.GetUrl(rand.Intn(num))
+		}
+		c.JSON(http.StatusOK, gin.H{"pass": true, "url": url})
+	}
+}
+
 func GetLogin(c *gin.Context) {
 	c.HTML(http.StatusOK, "login.html", gin.H{})
 }

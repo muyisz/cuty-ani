@@ -18,5 +18,7 @@ func InitRouter(db *data.MySQL) *gin.Engine {
 	router.GET("/login", handler.GetLogin)
 	router.GET("/dash", handler.GetDash)
 	router.GET("/info", handler.GetInfo(db))
+	router.POST("/up_photo", handler.PostPhoto(db))
+	router.GET("/getphoto", handler.GetPhoto(db))
 	return router
 }
