@@ -42,12 +42,16 @@ func PostLoginData(db *data.MySQL) gin.HandlerFunc {
 
 func PostPhoto(db *data.MySQL) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		photo, _ := c.FormFile("photo")
+		photo, err := c.FormFile("photo")
+		if err != nil || photo == nil {
+			c.JSON(http.StatusOK, gin.H{"pass": false})
+		}
+		ext := c.PostForm("ext")
 		num, _ := db.GetPhotoNum()
-		url := FileStorageDirectory + strconv.Itoa(num+1) + ".jfif"
-		db.SetPhoto(num+1, url)
-		dst := path.Join("./views/img/", strconv.Itoa(num+1)+".jfif")
+		url := FileStorageDirectory + strconv.Itoa(num+1) + ext
+		dst := path.Join("./views/img/", strconv.Itoa(num+1)+ext)
 		c.SaveUploadedFile(photo, dst)
+		db.SetPhoto(num+1, url)
 		c.JSON(http.StatusOK, gin.H{"pass": true})
 	}
 }
@@ -76,9 +80,23 @@ func GetPhoto(db *data.MySQL) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		num, _ := db.GetPhotoNum()
 		var url [11]string
+		var n [11]int
 		rand.Seed(time.Now().Unix())
 		for i := 0; i < 11; i++ {
-			url[i], _ = db.GetUrl(rand.Intn(num))
+			for {
+				k := rand.Intn(num) + 1
+				flag := 1
+				for j := 0; j < i; j++ {
+					if k == n[j] {
+						flag = 0
+					}
+				}
+				if flag == 1 {
+					n[i] = k
+					url[i], _ = db.GetUrl(k)
+					break
+				}
+			}
 		}
 		c.JSON(http.StatusOK, gin.H{"pass": true, "url": url})
 	}
