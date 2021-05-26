@@ -8,9 +8,11 @@ $(document).ready(function () {
         success: function(data){
             if(data.pass){
                 const k="img"
+                const s="supp"
                 for(i=0;i<11;i++){
                     n=i+1
                     document.getElementById(k+n).src=data.url[i]
+                    document.getElementById(s+n).innerText=data.supp[i]
                 }
             }
         },

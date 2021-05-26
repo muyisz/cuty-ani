@@ -19,8 +19,12 @@ $(document).ready(function () {
             alert("失败")
         }
     })
+    $('#room').click(function () {
+        window.location.href = "/message";
+    })
     $('#up').click(function () {
         const up_photo = $('#photo')[0].files[0];
+        const supp=document.getElementById('supp').value;
         if (up_photo) {
             var photo_name = document.getElementById('photo').value;
             var index = photo_name.lastIndexOf('.');
@@ -29,6 +33,7 @@ $(document).ready(function () {
                 var formdata = new FormData();
                 formdata.append("photo", up_photo);
                 formdata.append("ext",ext);
+                formdata.append("supp",supp);
                 $.ajax({
                     url: '/up_photo',
                     type: 'post',

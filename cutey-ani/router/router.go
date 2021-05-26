@@ -16,9 +16,14 @@ func InitRouter(db *data.MySQL) *gin.Engine {
 	router.POST("/login", handler.PostLoginData(db))
 	router.POST("/register", handler.PostRegisterData(db))
 	router.GET("/login", handler.GetLogin)
-	router.GET("/dash", handler.GetDash)
 	router.GET("/info", handler.GetInfo(db))
 	router.POST("/up_photo", handler.PostPhoto(db))
 	router.GET("/getphoto", handler.GetPhoto(db))
+	{
+		router.POST("/postRoom", handler.CheckCookie(db), handler.PostChatRoom(db))
+		router.GET("/dash", handler.CheckCookie(db), handler.GetDash)
+		router.GET("/getRoom", handler.CheckCookie(db), handler.GetChatRoom(db))
+		router.GET("/message", handler.CheckCookie(db), handler.GetRoom)
+	}
 	return router
 }
