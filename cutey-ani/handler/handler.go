@@ -146,7 +146,7 @@ func GetLogin(c *gin.Context) {
 }
 
 func GetRoom(c *gin.Context) {
-	c.HTML(http.StatusOK, "message.html", gin.H{})
+	c.HTML(http.StatusOK, "chatRoom.html", gin.H{})
 }
 func GetHome(c *gin.Context) {
 	c.HTML(http.StatusOK, "home.html", gin.H{})

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cutey-ANI|爱心交流室</title>
+		<!-- Load Bootstrap styles and jQuery scripts. -->
+		<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="/views/css/chatRoom.css" />
+		<script src="https://kit.fontawesome.com/71e3554019.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"
+			crossorigin="anonymous"></script>
+		<script type="text/javascript" src="/views/js/chatRoom.js"></script>
+	</head>
+	<body>
+		<header role="heading">
+			<div class="jumbotron jumbotron-fluid text-center">
+				<div class="container">
+					<h1 class="display-3 mb-3">Cutey-ANI</h1>
+					<span class="badge badge-success mb-3">Beta</span>
+					<p class="lead">
+						爱宠人士集中交流地，分享今日爱宠的乐趣，共享陪伴爱宠的心得。
+					</p>
+					<h4>交流你我心声，传递大家爱心</h4>
+				</div>
+			</div>
+		</header>
+		<main role="main">
+			<div class="container">
+				<div class="row">
+					<div class="col-2"></div>
+					<div class="col-8 row" id="col8">
+						<div class="col-4" id="wrapper">
+							<p id="hi">Hi，欢迎您~</p>
+							<img src="/views/img/bige.jpg">
+						</div>
+						<div class="col-8 talk_con">
+							<div style="height: 350px; border-bottom:solid 1px gray ;">
+								<div class="talk_show" id="chat_box"></div>
+							</div>
+							<div class="talk_input">
+								<textarea class="talk_word" id="msg"></textarea>
+								<input type="button" value="发送" class="talk_sub" id="send">
+								<input type="button" value="关闭" id="close" onclick="custom_close()" />
+							</div>
+						</div>
+					</div>
+					<div class="col-2"></div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

@@ -24,11 +24,10 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data)
                 if (data.pass) {
-                    head = ""
                     tail = "<br>"
                     k = ""
                     for (i = 0; i < data.msg.length; i++) {
-                        k = k + head + "<h5>" + data.msg[i].From + "</h5>" + "<h3>" + data.msg[i].Content + "</h3>" + "<h7>" + changeDateFormat(data.msg[i].Time) + "</h7>" + tail
+                        k = k +"<h7>" + changeDateFormat(data.msg[i].Time) +" "+ data.msg[i].From + "</h7>" + "<br>"+"<div class='btalk'><span>" + data.msg[i].Content + "</span></div>" + tail
                     }
                     document.getElementById("chat_box").innerHTML = k;
                 }
@@ -42,10 +41,12 @@ $(document).ready(function () {
         })
     }
     GetChatRoom()
-    $(function k() {
-        setTimeout(GetChatRoom(),10000000);
-        k()
-    });
+
+    function runEvery10Sec() {
+        setTimeout(runEvery10Sec, 1000 * 3);
+        GetChatRoom()
+    }
+    runEvery10Sec()
     $('#send').click(function () {
         const msg = document.getElementById('msg').value;
         if (msg != "") {
@@ -60,6 +61,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (data) {
                     if (data.pass) {
+                        document.getElementById('msg').value=""
                         GetChatRoom()
                     } else {
                         alert("发送失败1")

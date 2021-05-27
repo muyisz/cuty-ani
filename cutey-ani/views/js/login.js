@@ -20,15 +20,19 @@ $(document).ready(function () {
       formData.append('password', $('#password').val());
       $.ajax({
         url: '/register',
-        type: 'post', 
+        type: 'post',
         data: formData,
         processData: false,
         contentType: false,
         dataType: 'json',
-        success: function () {
-          window.localStorage.setItem("phone",data.phone)
-          window.location.href='/dash'
-          console.log('register successfully!');
+        success: function (data) {
+          if (data.pass) {
+            window.localStorage.setItem("phone", data.phone)
+            window.location.href = '/dash';
+            alert('register successfully!');
+          }else{
+            console.log('register failed!');
+          }
         },
         error: function () {
           console.log('register failed!');
@@ -44,11 +48,11 @@ $(document).ready(function () {
         data: formData,
         processData: false,
         contentType: false,
-        dataType:"json",
+        dataType: "json",
         success: function (data) {
           console.log('login successfully!');
           if (data.pass == true) {
-            window.localStorage.setItem("phone",data.phone)
+            window.localStorage.setItem("phone", data.phone)
             window.location.href = '/dash';
           } else {
             alert("账号或密码错误")
