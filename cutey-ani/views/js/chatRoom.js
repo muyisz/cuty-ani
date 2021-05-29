@@ -63,6 +63,8 @@ $(document).ready(function () {
                     if (data.pass) {
                         document.getElementById('msg').value=""
                         GetChatRoom()
+                        var div = document.getElementById('chat_box');
+                        div.scrollTop = div.scrollHeight;
                     } else {
                         alert("发送失败1")
                     }
